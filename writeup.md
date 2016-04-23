@@ -57,7 +57,7 @@ require(lattice)
 levelplot(columnsCor, scales=list(x=list(rot=90,cex=.7),y=list(cex=.7)))
 ```
 
-![correlation graph](https://github.com/thoqbk/practical-machine-learning/blob/master/correlation-plot.png)
+![correlation graph](https://raw.githubusercontent.com/thoqbk/practical-machine-learning/master/correlation-plot.png)
 
 Check dimension of valid training data after preprocessing
 ```R
