@@ -45,13 +45,14 @@ levelplot(columnsCor, scales=list(x=list(rot=<span class="hljs-number">90</span>
 <pre><code class="language-R">dim(validTraining.withCorrelation)
 [<span class="hljs-number">1</span>] <span class="hljs-number">19622</span>    <span class="hljs-number">50</span>
 </code></pre>
-<h2><a id="Slice_data_67"></a>Slice data</h2>
+<h2><a id="Slice_data_for_training_and_cross_validation_67"></a>Slice data for training and cross validation</h2>
+<p>We use 70% data for training and 30% for testing</p>
 <pre><code class="language-R"><span class="hljs-keyword">library</span>(caret)
 inTrain &lt;- createDataPartition(y=validTraining.withCorrelation$classe, p = <span class="hljs-number">0.7</span>, list = <span class="hljs-literal">FALSE</span>)
 training &lt;- validTraining.withCorrelation[inTrain,]
 testing &lt;- validTraining.withCorrelation[-inTrain,]
 </code></pre>
-<h2><a id="Model_1_use_regression_tree_implementation_in_Caret_package_74"></a>Model 1: use regression tree implementation in Caret package</h2>
+<h2><a id="Model_1_use_regression_tree_implementation_in_Caret_package_75"></a>Model 1: use regression tree implementation in Caret package</h2>
 <pre><code class="language-R">modFitRpart &lt;- train(classe ~ ., method = <span class="hljs-string">"rpart"</span>, data = training)
 answers &lt;- predict(modFitRpart, newdata = testing)
 sum(answers == testing[[<span class="hljs-string">"classe"</span>]]) / nrow(testing)
@@ -80,7 +81,7 @@ sum(answers == testing[[<span class="hljs-string">"classe"</span>]]) / nrow(test
                <span class="hljs-number">223</span>) accel_dumbbell_y&lt; -<span class="hljs-number">42.5</span> <span class="hljs-number">511</span>  <span class="hljs-number">164</span> C (<span class="hljs-number">0</span> <span class="hljs-number">0.051</span> <span class="hljs-number">0.68</span> <span class="hljs-number">0.02</span> <span class="hljs-number">0.25</span>) *
        <span class="hljs-number">7</span>) accel_belt_z&lt; -<span class="hljs-number">187.5</span> <span class="hljs-number">720</span>    <span class="hljs-number">5</span> E (<span class="hljs-number">0.0056</span> <span class="hljs-number">0.0014</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0.99</span>) *
 </code></pre>
-<h2><a id="Model_2_use_Tree_package_106"></a>Model 2: use Tree package</h2>
+<h2><a id="Model_2_use_Tree_package_107"></a>Model 2: use Tree package</h2>
 <pre><code class="language-R"><span class="hljs-keyword">library</span>(tree)
 modFitTree &lt;- tree(classe ~ ., data = training)
 answers &lt;- predict(modFitTree, newdata = testing, type = <span class="hljs-string">"class"</span>)
@@ -88,7 +89,7 @@ sum(answers == testing[[<span class="hljs-string">"classe"</span>]]) / nrow(test
 [<span class="hljs-number">1</span>] <span class="hljs-number">0.6762957</span>
 </code></pre>
 <p>The 0.67 is better than the result of model 1 but it is still not a good prediction.</p>
-<h2><a id="Model_3_use_Random_Forest_116"></a>Model 3: use Random Forest</h2>
+<h2><a id="Model_3_use_Random_Forest_117"></a>Model 3: use Random Forest</h2>
 <pre><code class="language-R"><span class="hljs-keyword">library</span>(randomForest)
 modFitRf &lt;- randomForest(classe ~ ., data=training)
 answers &lt;- predict(modFitRf, newdata = testing, type = <span class="hljs-string">"class"</span>)
@@ -111,7 +112,7 @@ D    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>   
 E    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">3</span>    <span class="hljs-number">8</span> <span class="hljs-number">2514</span> <span class="hljs-number">0.0043564356</span>
 </code></pre>
 <p>There are 500 trees in this model and it usually uses 7 predictors to build up a tree. The error rate is 0.58%</p>
-<h2><a id="Use_the_random_forest_model_for_pmltestingcsv_data_143"></a>Use the random forest model for pml-testing.csv data</h2>
+<h2><a id="Use_the_random_forest_model_for_pmltestingcsv_data_144"></a>Use the random forest model for pml-testing.csv data</h2>
 <pre><code class="language-R">rawTesting &lt;- read.csv(<span class="hljs-string">"pml-testing.csv"</span>)
 answers &lt;- predict(modFitRf, newdata = rawTesting, type=<span class="hljs-string">"class"</span>)
 answers
@@ -121,7 +122,7 @@ answers
  B  A  B  A  A  E  D  B  A  A  B  C  B  A  E  E  A  B  B  B 
 Levels: A B C D E
 </code></pre>
-<h2><a id="About_me_157"></a>About me</h2>
+<h2><a id="About_me_158"></a>About me</h2>
 <p>Tho Q Luong, email: <a href="mailto:thoqbk@gmail.com">thoqbk@gmail.com</a>, homepage: <a href="http://thoqbk.github.io/">thoqbk.github.io</a></p>
 
 </body></html>

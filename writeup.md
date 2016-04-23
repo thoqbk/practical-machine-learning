@@ -65,7 +65,8 @@ dim(validTraining.withCorrelation)
 [1] 19622    50
 ```
 
-## Slice data
+## Slice data for training and cross validation
+We use 70% data for training and 30% for testing
 ```R
 library(caret)
 inTrain <- createDataPartition(y=validTraining.withCorrelation$classe, p = 0.7, list = FALSE)
