@@ -27,9 +27,9 @@ columns.woUnrelevant &lt;- columns.woNa[!(columns.woNa %<span class="hljs-keywor
                                                    <span class="hljs-string">"new_window"</span>, <span class="hljs-string">"num_window"</span>))]
 validTraining &lt;- rawTraining[, columns.woUnrelevant]
 </code></pre>
-<p>Check the dimension again. Now there are only 59 columns</p>
+<p>Check the dimension again. Now there are only 53 columns</p>
 <pre><code class="language-R">dim(validTraining)
-[<span class="hljs-number">1</span>] <span class="hljs-number">19622</span>    <span class="hljs-number">59</span>
+[<span class="hljs-number">1</span>] <span class="hljs-number">19622</span>    <span class="hljs-number">53</span>
 </code></pre>
 <p>Check correlation of columns to remove highly correlated columns which have correlation value &gt; 0.9</p>
 <pre><code class="language-R">columnsCor &lt;- cor(validTraining[sapply(validTraining, is.numeric)])

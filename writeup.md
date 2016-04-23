@@ -38,10 +38,10 @@ columns.woUnrelevant <- columns.woNa[!(columns.woNa %in% c("X","user_name", "raw
 validTraining <- rawTraining[, columns.woUnrelevant]
 ```
 
-Check the dimension again. Now there are only 59 columns
+Check the dimension again. Now there are only 53 columns
 ```R
 dim(validTraining)
-[1] 19622    59
+[1] 19622    53
 ```
 
 Check correlation of columns to remove highly correlated columns which have correlation value > 0.9
