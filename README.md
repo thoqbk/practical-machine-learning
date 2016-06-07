@@ -1,6 +1,4 @@
-# Practical machine learning assignment
+# Practical machine learning
 
-Assignment writeup in HTML format: [writeup.html](https://rawgit.com/thoqbk/practical-machine-learning/master/writeup.html)
-
-About this course: [Practical machine learning](https://www.coursera.org/learn/practical-machine-learning/)
+Writeup in HTML format: [writeup.html](https://rawgit.com/thoqbk/practical-machine-learning/master/writeup.html)
 
